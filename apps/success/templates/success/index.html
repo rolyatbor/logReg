@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login &amp; Reg | Success</title>
+</head>
+<body>
+    <h1>Success! Welcome {{ request.session.first }}</h1>
+    <p><span style="color:green">You have successfully {{request.session.word}}</span></p>
+    <form action="{% url 'user:logout' %}">
+        {% csrf_token %}
+        <input type="submit" value="Logout">
+    </form>
+</body>
+</html>

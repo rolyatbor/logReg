@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login &amp; Reg | Home</title>
+</head>
+<body>
+    <fieldset class="forms registration">
+        <legend>Registration</legend>
+        <table>
+            <form action="{% url 'user:register' %}" method="post">
+                {% csrf_token %}
+            <tr>
+                <td><label for="">First Name:</label></td>
+                <td><input type="text" name="first"></td>
+            </tr>
+            <tr>
+                <td><label for="">Last Name:</label></td>
+                <td><input type="text" name="last"></td>
+            </tr>
+            <tr>
+                <td><label for="">Email:</label></td>
+                <td><input type="text" name="email"></td>
+            </tr>
+            <tr>
+                <td><label for="">Password:</label></td>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <td><label for="">Confirm:</label></td>
+                <td><input type="password" name="confirm"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="action" value="Register"></td>
+            </tr>
+            </form>
+        </table>
+    </fieldset>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <fieldset class="forms login">
+        <legend>Login</legend>
+        <table>
+            <form action="{% url 'user:login' %}" method="post">
+                {% csrf_token %}
+            <tr>
+                <td><label for="">Email:</label></td>
+                <td><input type="text" name="email"></td>
+            </tr>
+            <tr>
+                <td><label for="">Password:</label></td>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="action" value="Login"></td>
+            </tr>
+            </form>
+        </table>
+    </fieldset>
+</body>
+</html>
